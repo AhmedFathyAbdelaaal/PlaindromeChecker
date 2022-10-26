@@ -222,8 +222,10 @@ infoText = document.querySelector(".info-text");
 let filterInput; 
 ```
 
-Then we start our first functuion that will activate when the button is clicked:
-inside that event, the input is revered and put into a variable reverseInput. it is reversed using .reverse()
+Then we start our first functuion that will activate when the button is clicked: 
+
+inside that event, the input is revered and put into a variable reverseInput. it is reversed using .reverse() 
+
 Then the state of displaying of the info text is set and the conditon of failure , if the reverseInput is not the same as the og one, it will show the appropriate messages at the end.
 
 ```js
@@ -236,3 +238,21 @@ checkBtn.addEventListener("click", () => { //if the button is clicked, this func
     infoText.innerHTML = `Yes, <span>'${txtInput.value}'</span> is a palindrome!`;//but if they are the same it will return appropriate infoText being that it is a plaindrome
 });
 ```
+Then we also have an eventlisten for when the user keysup (presses enter): 
+
+It sets our filterInput and formats it. 
+
+if the filterInput is not empty, it means the user entered something and can press the button now thus changing its activity state. The info text display state is cleared and so its active class.
+
+```js
+txtInput.addEventListener("keyup", () => { //if keyup (user pressed enter), the input fields content will be taken.
+    filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, ""); //the input fields content will formatted and put into filterInput
+    if(filterInput) { //if filterInput is not empty, as in the user actually entered something, the button will have the active class and so it can be clicked. 
+        return checkBtn.classList.add("active");
+    }
+    infoText.style.display = "none"; //set style display for the info text
+    checkBtn.classList.remove("active"); //remove the "active" class after its use is done.
+});
+```
+
+So as you can see, this project is quite simple and quick. it was nice constructing it and seeing it work
