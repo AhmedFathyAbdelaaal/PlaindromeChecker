@@ -49,3 +49,155 @@ The code will end up looking like so:
 </body>
 </html>
 ```
+
+## Now onto style.css 
+
+This code just handles the styling for the app to make it look neat. mine ended up looking like so:
+![picOfApp](https://user-images.githubusercontent.com/115345791/197939389-dbbcc6ce-1ecb-4131-a8ad-4eb6e9c535f4.jpg)
+
+The code is self-explainatory and i Added comments on the important ones. 
+
+i  will be just highlighting important sections.
+
+we imported our own font:
+```css
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+```
+
+Styled the whole page with the * sign:
+```css
+*{
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+```
+
+Styled all of the body to have some padding, have its items and content aligned in the middle vertically and horizontally. Gave it a minimum height and a background color:
+```css
+body{
+  display: flex;
+  padding: 0 10px;
+  align-items: center; /* Align items center-wise vertically*/
+  justify-content: center; /* Align items center-wise horizontally*/
+  min-height: 100vh; /*Minimum height for the app. since it is all in the body*/
+  background: #4135c5; /*The background color*/
+}
+```
+we had some code for if the user highlights text on our app to change its background color and text color:
+```css
+::selection{ /*when the user highlighs something*/
+  color: #fff;
+  background: rgb(170,87,204,0.8); 
+}
+```
+Code for styling the wrapper was also added:
+```css
+.wrapper{ /*The wrapper div element*/
+  max-width: 500px; /*Maximum width*/
+  background: #fff; /*Its background color*/
+  border-radius: 7px; /*Its border radius*/
+  padding: 20px 25px 15px; /*Its padding*/
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12); /*Its shadow*/
+}
+```
+Header elements were styled:
+```css
+header h1{ /*The header's element that represents the title of our application*/
+  font-size: 34px; 
+  font-weight: 500;
+  text-align: center;
+  padding: 1rem;
+}
+header p{ /*The header's element that represents the explaination of palindrome*/
+  margin-top: 5px;
+  font-size: 18px;
+  color: #474747;
+  padding: 1rem;
+}
+```
+Then the div representing input was also syled with its button and input field content:
+```css
+.inputs{ /* input field's margin*/
+  margin: 20px 0 27px;
+}
+.inputs input{ /* input field's styling*/
+  width: 100%;
+  height: 60px;
+  outline: none;
+  padding: 0 17px;
+  font-size: 19px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  transition: 0.1s ease;
+}
+.inputs input::placeholder{ /* input field's placeholder color*/
+  color: #999999;
+}
+.inputs input:focus{ /* input field's shadow when in focus*/
+  box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.inputs input:focus::placeholder{ /* input field's placeholder color when in focus*/
+  color: #bebebe;
+}
+.inputs button{ /* The buttons styling */
+  width: 100%;
+  height: 56px;
+  border: none;
+  opacity: 0.7;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  margin-top: 20px;
+  border-radius: 5px;
+  pointer-events: none;
+  background: #35c541;
+  transition: opacity 0.15s ease;
+}
+.inputs button.active{ /*When the button is pressable (dectated by wheather is there anything in the text input or not later on in the js file).*/
+  opacity: 1;
+  pointer-events: auto;
+}
+```
+The  finally the code for info-text (the p tag that will show whether what the user has inputted in a Palindrome or not is styled)
+```css
+.info-text{ /*the informative text's styling (text that will tell user whether word == palindrome or not.)*/
+  display: none;
+  font-size: 19px; 
+  text-align: center;
+  margin-bottom: 18px;
+}
+.info-text span{ /*This part will have the word the user entered*/
+  color: #AA57CC;
+}
+```
+
+Finally we add some responsiveness to the page using @media:
+
+```css
+@media (max-width: 520px) { /*Handling reponsiveness*/
+  .wrapper{
+    padding: 17px 20px 10px;
+  }
+  header h1{
+    font-size: 25px;
+  }
+  header p{
+    font-size: 16px;
+  }
+  .inputs input{
+    height: 54px;
+    font-size: 17px;
+  }
+  .inputs button{
+    height: 50px;
+    font-size: 16px;
+    margin-top: 17px;
+  }
+  .info-txt{
+    font-size: 18px;
+  }
+}
+```
